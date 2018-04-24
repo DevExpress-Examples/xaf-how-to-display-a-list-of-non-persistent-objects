@@ -28,7 +28,7 @@
             Me.module3 = New UnboundListView.Module.UnboundListViewModule()
             Me.scriptRecorderWindowsFormsModule1 = New DevExpress.ExpressApp.ScriptRecorder.Win.ScriptRecorderWindowsFormsModule()
             Me.scriptRecorderModuleBase1 = New DevExpress.ExpressApp.ScriptRecorder.ScriptRecorderModuleBase()
-            DirectCast(Me, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             ' 
             ' UnboundListViewWindowsFormsApplication
             ' 
@@ -38,7 +38,7 @@
             Me.Modules.Add(Me.module3)
             Me.Modules.Add(Me.scriptRecorderModuleBase1)
             Me.Modules.Add(Me.scriptRecorderWindowsFormsModule1)
-            DirectCast(Me, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
         End Sub
 

@@ -27,7 +27,11 @@ Namespace UnboundListView.Module
             Dim duplicateId As Integer = 0
             For Each record As KeyValuePair(Of String, Integer) In dictionary
                 If record.Value > 1 Then
-                    duplicateList.Duplicates.Add(New Duplicate() With {.Id = duplicateId, .Title = record.Key, .Count = record.Value})
+                    duplicateList.Duplicates.Add(New Duplicate() With { _
+                        .Id = duplicateId, _
+                        .Title = record.Key, _
+                        .Count = record.Value _
+                    })
                     duplicateId += 1
                 End If
             Next record
