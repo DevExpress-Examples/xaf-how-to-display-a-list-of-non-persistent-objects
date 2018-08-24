@@ -9,7 +9,8 @@ using DevExpress.ExpressApp;
 namespace UnboundListView.Win {
     public partial class UnboundListViewWindowsFormsApplication : WinApplication {
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
-            args.ObjectSpaceProvider = new XPObjectSpaceProvider(args.ConnectionString, args.Connection);
+            args.ObjectSpaceProviders.Add(new XPObjectSpaceProvider(args.ConnectionString, args.Connection));
+            args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));
         }
         public UnboundListViewWindowsFormsApplication() {
             InitializeComponent();

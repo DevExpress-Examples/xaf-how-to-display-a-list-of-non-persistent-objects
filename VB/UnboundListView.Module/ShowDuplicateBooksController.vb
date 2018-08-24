@@ -23,19 +23,21 @@ Namespace UnboundListView.Module
                     End If
                 End If
             Next book
-            Dim duplicateList As New DuplicatesList()
+            Dim nonPersistentOS = Application.CreateObjectSpace(GetType(DuplicatesList))
+            Dim duplicateList = nonPersistentOS.CreateObject(Of DuplicatesList)()
             Dim duplicateId As Integer = 0
             For Each record As KeyValuePair(Of String, Integer) In dictionary
                 If record.Value > 1 Then
-                    duplicateList.Duplicates.Add(New Duplicate() With { _
-                        .Id = duplicateId, _
-                        .Title = record.Key, _
-                        .Count = record.Value _
-                    })
+                    Dim dup = nonPersistentOS.CreateObject(Of Duplicate)()
+                    dup.Id = duplicateId
+                    dup.Title = record.Key
+                    dup.Count = record.Value
+                    duplicateList.Duplicates.Add(dup)
                     duplicateId += 1
                 End If
             Next record
-            e.View = Application.CreateDetailView(Application.CreateObjectSpace(), duplicateList)
+            nonPersistentOS.CommitChanges()
+            e.View = Application.CreateDetailView(nonPersistentOS, duplicateList)
             e.DialogController.SaveOnAccept = False
             e.DialogController.CancelAction.Active("NothingToCancel") = False
         End Sub
