@@ -1,10 +1,10 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UnboundListView.Win", "UnboundListView.Win\UnboundListView.Win.vbproj", "{320035BF-4A3D-4CE1-A86F-DBD20CB3C594}"
+EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UnboundListView.Module", "UnboundListView.Module\UnboundListView.Module.vbproj", "{E1F7225C-D2CA-46D2-B8AF-0349241A4D7B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UnboundListView.Web", "UnboundListView.Web\UnboundListView.Web.vbproj", "{738A293A-377E-40E7-BC0D-24766D515305}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UnboundListView.Win", "UnboundListView.Win\UnboundListView.Win.vbproj", "{320035BF-4A3D-4CE1-A86F-DBD20CB3C594}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
