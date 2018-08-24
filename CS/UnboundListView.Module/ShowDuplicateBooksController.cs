@@ -22,19 +22,21 @@ namespace UnboundListView.Module {
                         dictionary.Add(book.Title, 1);
                 }
             }
-            DuplicatesList duplicateList = new DuplicatesList();
+            var nonPersistentOS = Application.CreateObjectSpace(typeof(DuplicatesList));
+            DuplicatesList duplicateList =nonPersistentOS.CreateObject<DuplicatesList>();
             int duplicateId = 0;
             foreach(KeyValuePair<string, int> record in dictionary) {
                 if (record.Value > 1) {
-                    duplicateList.Duplicates.Add(
-                        new Duplicate() {
-                            Id = duplicateId,
-                            Title = record.Key, 
-                            Count = record.Value });
+                    var dup = nonPersistentOS.CreateObject<Duplicate>();
+                    dup.Id = duplicateId;
+                    dup.Title = record.Key;
+                    dup.Count = record.Value;
+                    duplicateList.Duplicates.Add(dup);
                     duplicateId++;
                 }
             }
-            e.View = Application.CreateDetailView(Application.CreateObjectSpace(), duplicateList);
+            nonPersistentOS.CommitChanges();
+            e.View = Application.CreateDetailView(nonPersistentOS, duplicateList);
             e.DialogController.SaveOnAccept = false;
             e.DialogController.CancelAction.Active["NothingToCancel"] = false;
         }
