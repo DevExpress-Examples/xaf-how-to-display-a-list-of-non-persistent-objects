@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,13 +7,11 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{320035BF-4A3D-4CE1-A86F-DBD20CB3C594}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>UnboundListView.Win</AssemblyName>
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
+    <FileUpgradeFlags></FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
@@ -80,7 +78,7 @@
     <Reference Include="DevExpress.ExpressApp.EasyTest.WinAdapter.v18.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.ScriptRecorder.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.ScriptRecorder.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.ScriptRecorder.Win.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v18.1">
       <SpecificVersion>False</SpecificVersion>

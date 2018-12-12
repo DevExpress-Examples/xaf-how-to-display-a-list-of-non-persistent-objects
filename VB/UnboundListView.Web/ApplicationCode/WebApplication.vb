@@ -28,8 +28,7 @@ Namespace UnboundListView.Web
         Inherits WebApplication
 
         Protected Overrides Sub CreateDefaultObjectSpaceProvider(ByVal args As CreateCustomObjectSpaceProviderEventArgs)
-            args.ObjectSpaceProviders.Add(New XPObjectSpaceProvider(args.ConnectionString, args.Connection))
-            args.ObjectSpaceProviders.Add(New NonPersistentObjectSpaceProvider(TypesInfo, Nothing))
+            args.ObjectSpaceProvider = New XPObjectSpaceProvider(args.ConnectionString, args.Connection)
         End Sub
         Private module1 As DevExpress.ExpressApp.SystemModule.SystemModule
         Private module2 As DevExpress.ExpressApp.Web.SystemModule.SystemAspNetModule
