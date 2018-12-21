@@ -1,3 +1,3 @@
 <%@ Language=VBScript %>
-<%Response.Redirect("DefaultVertical.aspx")
+<%Response.Redirect("Default.aspx")
 %>
