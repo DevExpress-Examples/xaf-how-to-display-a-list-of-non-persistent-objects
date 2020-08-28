@@ -5,14 +5,14 @@
 		<Application
 			Name="UnboundListViewWin"
 			FileName="[WinAppBin]\UnboundListView.Win.exe"
-			AdapterAssemblyName="DevExpress.ExpressApp.EasyTest.WinAdapter.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+			AdapterAssemblyName="DevExpress.ExpressApp.EasyTest.WinAdapter.v18.1, Version=18.1.14.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
 			CommunicationPort="4100"/>
 		<!-- Web -->
 		<Application
 			Name="UnboundListViewWeb"
 			Url="http://localhost:4030"
 			PhysicalPath="[WebAppBin]"
-			AdapterAssemblyName="DevExpress.ExpressApp.EasyTest.WebAdapter.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+			AdapterAssemblyName="DevExpress.ExpressApp.EasyTest.WebAdapter.v18.1, Version=18.1.14.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
 		<!-- For IIS -->
 		<!--Application
 			Name="[SolutionName]Web"
