@@ -7,6 +7,7 @@
 
 
 <p>This example demonstrates how to display a list of non-persistent objects. The complete description is available in the <a href="http://help.devexpress.com/#Xaf/CustomDocument3167"><u>How to: Display a List of Non-Persistent Objects</u></a> help topic.<br />
+  
 ![image](https://user-images.githubusercontent.com/14300209/232475656-ba30a5be-4e96-49f9-8228-2091378e5f09.png)
 
 <strong>See Also:</strong><br />
