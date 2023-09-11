@@ -1,6 +1,5 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Updating;
-using Microsoft.CodeAnalysis.Classification;
 using System.Xml.Linq;
 
 namespace NonPersistentListView.Module.DatabaseUpdate;
