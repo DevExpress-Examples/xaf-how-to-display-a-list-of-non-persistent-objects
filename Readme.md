@@ -4,9 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 # How to: Display a List of Non-Persistent Objects
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e980/)**
-<!-- run online end -->
 
 
 <p>This example demonstrates how to display a list of non-persistent objects. The complete description is available in the <a href="http://help.devexpress.com/#Xaf/CustomDocument3167"><u>How to: Display a List of Non-Persistent Objects</u></a> help topic.<br />
