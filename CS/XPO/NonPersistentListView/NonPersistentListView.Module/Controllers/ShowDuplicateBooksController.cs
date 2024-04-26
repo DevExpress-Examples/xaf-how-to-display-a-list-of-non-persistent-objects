@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
+using DevExpress.Persistent.Base;
 
 namespace NonPersistentListView.Module {
     public class ShowDuplicateBooksController : ObjectViewController<ListView, Book> {
         public ShowDuplicateBooksController() {
             PopupWindowShowAction showDuplicatesAction = 
-                new PopupWindowShowAction(this, "ShowDuplicateBooks", "View");
+                new PopupWindowShowAction(this, "ShowDuplicateBooks", PredefinedCategory.View);
             showDuplicatesAction.CustomizePopupWindowParams += showDuplicatesAction_CustomizePopupWindowParams;
         }
 

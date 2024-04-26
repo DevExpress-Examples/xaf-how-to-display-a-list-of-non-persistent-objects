@@ -11,11 +11,11 @@ using DevExpress.Persistent.Validation;
 
 namespace NonPersistentListView.Module {
     [DefaultClassOptions]
-    public class Book : BaseObject {
+    public class Book :BaseObject {
         public Book(Session session) : base(session) { }
         public string Title {
-            get { return GetPropertyValue<string>("Title"); }
-            set { SetPropertyValue<string>("Title", value); }
+            get { return GetPropertyValue<string>(nameof(Title)); }
+            set { SetPropertyValue<string>(nameof(Title), value); }
         }
     }
 }
