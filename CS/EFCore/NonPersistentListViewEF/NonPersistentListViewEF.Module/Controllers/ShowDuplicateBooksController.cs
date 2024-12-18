@@ -1,44 +1,53 @@
-using System;
-using System.Collections.Generic;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
+using DevExpress.Persistent.Base;
+using System.Collections;
 
 namespace NonPersistentListView.Module {
     public class ShowDuplicateBooksController : ObjectViewController<ListView, Book> {
         public ShowDuplicateBooksController() {
-            PopupWindowShowAction showDuplicatesAction = 
-                new PopupWindowShowAction(this, "ShowDuplicateBooks", "View");
+            PopupWindowShowAction showDuplicatesAction = new PopupWindowShowAction(this, "ShowDuplicateBooks", PredefinedCategory.View);
             showDuplicatesAction.CustomizePopupWindowParams += showDuplicatesAction_CustomizePopupWindowParams;
         }
+        private void showDuplicatesAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e) {
+            var duplicatesDictionary = GetDuplicatesDictionary(View.CollectionSource.List);
 
-        void showDuplicatesAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e) {
-            Dictionary<string, int> dictionary = new Dictionary<string, int>();
-            foreach(Book book in View.CollectionSource.List) {
-                if(!string.IsNullOrEmpty(book.Title)) {
-                    if(dictionary.ContainsKey(book.Title)) {
-                        dictionary[book.Title]++;
-                    }
-                    else 
-                        dictionary.Add(book.Title, 1);
-                }
-            }
-            var nonPersistentOS = Application.CreateObjectSpace(typeof(DuplicatesList));
-            DuplicatesList duplicateList =nonPersistentOS.CreateObject<DuplicatesList>();
-            int duplicateId = 0;
-            foreach(KeyValuePair<string, int> record in dictionary) {
-                if (record.Value > 1) {
-                    var dup = nonPersistentOS.CreateObject<Duplicate>();
-                    dup.Id = duplicateId;
-                    dup.Title = record.Key;
-                    dup.Count = record.Value;
-                    duplicateList.Duplicates.Add(dup);
-                    duplicateId++;
-                }
-            }
-            nonPersistentOS.CommitChanges();
-            e.View = Application.CreateDetailView(nonPersistentOS, duplicateList);
+            var nonPersistentObjectSpace = Application.CreateObjectSpace(typeof(DuplicatesList));
+
+            var duplicatesList = CreateDuplicatesList(duplicatesDictionary, nonPersistentObjectSpace);
+
+            e.View = Application.CreateDetailView(nonPersistentObjectSpace, duplicatesList);
             e.DialogController.SaveOnAccept = false;
             e.DialogController.CancelAction.Active["NothingToCancel"] = false;
+        }
+        private Dictionary<string, int> GetDuplicatesDictionary(IList books) {
+            var dictionary = new Dictionary<string, int>();
+            foreach(Book book in View.CollectionSource.List) {
+                if(string.IsNullOrWhiteSpace(book.Title)) continue;
+
+                if(dictionary.TryGetValue(book.Title, out int count)) {
+                    dictionary[book.Title] = count + 1;
+                } else {
+                    dictionary[book.Title] = 1;
+                }
+            }
+            return dictionary;
+        }
+        private DuplicatesList CreateDuplicatesList(Dictionary<string, int> duplicatesDictionary, IObjectSpace objectSpace) {
+            DuplicatesList duplicatesList = objectSpace.CreateObject<DuplicatesList>();
+            int duplicateId = 0;
+            foreach(var (title, count) in duplicatesDictionary) {
+                if(count <= 1) continue;
+
+                var duplicate = objectSpace.CreateObject<Duplicate>();
+                duplicate.Id = duplicateId++;
+                duplicate.Title = title;
+                duplicate.Count = count;
+
+                duplicatesList.Duplicates.Add(duplicate);
+            }
+            objectSpace.CommitChanges();
+            return duplicatesList;
         }
     }
 }
