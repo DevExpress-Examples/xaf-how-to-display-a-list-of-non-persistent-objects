@@ -1,14 +1,10 @@
-using System;
 using System.ComponentModel;
-using DevExpress.Xpo;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp;
 
 namespace NonPersistentListView.Module {
     [DomainComponent]
     public class Duplicate: NonPersistentBaseObject {
-        [Browsable(false)]
-        public int Id;
         public string Title { get; set; }
         public int Count { get; set; }
     }
