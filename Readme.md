@@ -47,12 +47,12 @@ This example stores a list of books. When a user clicks the **Show Duplicate Boo
     
 	```csharp
     [DomainComponent]
-    public class Duplicate: NonPersistentBaseObject {
+    public class Duplicate: NonPersistentLiteObject {
         public string Title { get; set; }
         public int Count { get; set; }
     }
     [DomainComponent]
-    public class DuplicatesList: NonPersistentBaseObject {
+    public class DuplicatesList: NonPersistentLiteObject {
         private BindingList<Duplicate> duplicates;
         public DuplicatesList() {
             duplicates = new BindingList<Duplicate>();
