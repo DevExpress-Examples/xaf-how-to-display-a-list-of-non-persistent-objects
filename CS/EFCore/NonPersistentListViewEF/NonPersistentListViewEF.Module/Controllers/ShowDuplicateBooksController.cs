@@ -30,18 +30,18 @@ namespace NonPersistentListView.Module {
             }
             return dictionary;
         }
-        private DuplicatesList CreateDuplicatesList(Dictionary<string, int> duplicatesDictionary, IObjectSpace objectSpace) {
-            DuplicatesList duplicatesList = objectSpace.CreateObject<DuplicatesList>();
+        private DuplicatesList CreateDuplicatesList(Dictionary<string, int> duplicatesDictionary, IObjectSpace nonPersistentObjectSpace) {
+            DuplicatesList duplicatesList = nonPersistentObjectSpace.CreateObject<DuplicatesList>();
             foreach(var (title, count) in duplicatesDictionary) {
                 if(count <= 1) continue;
 
-                var duplicate = objectSpace.CreateObject<Duplicate>();
+                var duplicate = nonPersistentObjectSpace.CreateObject<Duplicate>();
                 duplicate.Title = title;
                 duplicate.Count = count;
 
                 duplicatesList.Duplicates.Add(duplicate);
             }
-            objectSpace.CommitChanges();
+            nonPersistentObjectSpace.CommitChanges();
             return duplicatesList;
         }
     }
