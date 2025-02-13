@@ -11,7 +11,7 @@ namespace NonPersistentListView.Module {
         }
         private void showDuplicatesAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e) {
             var duplicatesDictionary = GetDuplicatesDictionary();
-            var nonPersistentObjectSpace = Application.CreateObjectSpace(typeof(DuplicatesList));
+            var nonPersistentObjectSpace = Application.CreateObjectSpace<DuplicatesList>();
             var duplicatesList = CreateDuplicatesList(duplicatesDictionary, nonPersistentObjectSpace);
             e.View = Application.CreateDetailView(nonPersistentObjectSpace, duplicatesList);
             e.DialogController.SaveOnAccept = false;
@@ -30,18 +30,18 @@ namespace NonPersistentListView.Module {
             }
             return dictionary;
         }
-        private DuplicatesList CreateDuplicatesList(Dictionary<string, int> duplicatesDictionary, IObjectSpace nonPersistentObjectSpace) {
-            DuplicatesList duplicatesList = nonPersistentObjectSpace.CreateObject<DuplicatesList>();
+        private DuplicatesList CreateDuplicatesList(Dictionary<string, int> duplicatesDictionary, IObjectSpace objectSpace) {
+            DuplicatesList duplicatesList = objectSpace.CreateObject<DuplicatesList>();
             foreach(var (title, count) in duplicatesDictionary) {
                 if(count <= 1) continue;
 
-                var duplicate = nonPersistentObjectSpace.CreateObject<Duplicate>();
+                var duplicate = objectSpace.CreateObject<Duplicate>();
                 duplicate.Title = title;
                 duplicate.Count = count;
 
                 duplicatesList.Duplicates.Add(duplicate);
             }
-            nonPersistentObjectSpace.CommitChanges();
+            objectSpace.CommitChanges();
             return duplicatesList;
         }
     }

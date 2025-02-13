@@ -11,9 +11,7 @@ namespace NonPersistentListView.Module {
         }
         private void showDuplicatesAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e) {
             var duplicatesDictionary = GetDuplicatesDictionary();
-
-            var nonPersistentObjectSpace = Application.CreateObjectSpace(typeof(DuplicatesList));
-
+            var nonPersistentObjectSpace = Application.CreateObjectSpace<DuplicatesList>();
             var duplicatesList = CreateDuplicatesList(duplicatesDictionary, nonPersistentObjectSpace);
 
             e.View = Application.CreateDetailView(nonPersistentObjectSpace, duplicatesList);
