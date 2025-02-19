@@ -22,12 +22,7 @@ namespace NonPersistentListView.Module {
             var dictionary = new Dictionary<string, int>();
             foreach(Book book in View.CollectionSource.List) {
                 if(string.IsNullOrWhiteSpace(book.Title)) continue;
-
-                if(dictionary.TryGetValue(book.Title, out int count)) {
-                    dictionary[book.Title] = count + 1;
-                } else {
-                    dictionary[book.Title] = 1;
-                }
+                dictionary[book.Title] = dictionary.GetValueOrDefault(book.Title) + 1;
             }
             return dictionary;
         }
