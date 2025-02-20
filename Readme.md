@@ -22,7 +22,7 @@ This example stores a list of books. When a user clicks the **Show Duplicate Boo
 
 
 
-See the following help topic for more detailed information: [How to: Display a List of Non-Persistent Objects via an Intermediate Container Class and Its DetailView](https://docs.devexpress.com/eXpressAppFramework/113167/business-model-design-orm/non-persistent-objects/how-to-display-a-list-of-non-persistent-objects-in-a-popup-dialog)
+See the following help topic for more detailed information: [How to: Display a List of Non-Persistent Objects in a Popup Dialog](https://docs.devexpress.com/eXpressAppFramework/113167/business-model-design-orm/non-persistent-objects/how-to-display-a-list-of-non-persistent-objects-in-a-popup-dialog)
 
 ## Files to Review
 
@@ -37,7 +37,7 @@ See the following help topic for more detailed information: [How to: Display a L
 
 ## More Examples
 
-- [How to implement CRUD operations for Non-Persistent Objects stored remotely in eXpressApp Framework](https://github.com/DevExpress-Examples/XAF_Non-Persistent-Objects-Editing-Demo)
+- [XAF - How to Implement CRUD Operations for Non-Persistent Objects Stored Remotely](https://github.com/DevExpress-Examples/XAF_Non-Persistent-Objects-Editing-Demo)
 - [XAF - How to edit non-persistent objects nested in a persistent object](https://github.com/DevExpress-Examples/XAF_Non-Persistent-Objects-Nested-In-Persistent-Objects-Demo)
 - [XAF - How to filter and sort non-persistent objects](https://github.com/DevExpress-Examples/XAF_Non-Persistent-Objects-Filtering-Demo)
 - [XAF - How to refresh non-persistent objects and reload nested persistent objects](https://github.com/DevExpress-Examples/XAF_Non-Persistent-Objects-Reloading-Demo)
