@@ -10,37 +10,27 @@ namespace NonPersistentListView.Module {
             showDuplicatesAction.CustomizePopupWindowParams += showDuplicatesAction_CustomizePopupWindowParams;
         }
         private void showDuplicatesAction_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e) {
-            var duplicatesDictionary = GetDuplicatesDictionary(View.CollectionSource.List);
-
-            var nonPersistentObjectSpace = Application.CreateObjectSpace(typeof(DuplicatesList));
-
+            var duplicatesDictionary = GetDuplicatesDictionary();
+            var nonPersistentObjectSpace = Application.CreateObjectSpace<DuplicatesList>();
             var duplicatesList = CreateDuplicatesList(duplicatesDictionary, nonPersistentObjectSpace);
-
             e.View = Application.CreateDetailView(nonPersistentObjectSpace, duplicatesList);
             e.DialogController.SaveOnAccept = false;
             e.DialogController.CancelAction.Active["NothingToCancel"] = false;
         }
-        private Dictionary<string, int> GetDuplicatesDictionary(IList books) {
+        private Dictionary<string, int> GetDuplicatesDictionary() {
             var dictionary = new Dictionary<string, int>();
             foreach(Book book in View.CollectionSource.List) {
                 if(string.IsNullOrWhiteSpace(book.Title)) continue;
-
-                if(dictionary.TryGetValue(book.Title, out int count)) {
-                    dictionary[book.Title] = count + 1;
-                } else {
-                    dictionary[book.Title] = 1;
-                }
+                dictionary[book.Title] = dictionary.GetValueOrDefault(book.Title) + 1;
             }
             return dictionary;
         }
         private DuplicatesList CreateDuplicatesList(Dictionary<string, int> duplicatesDictionary, IObjectSpace objectSpace) {
             DuplicatesList duplicatesList = objectSpace.CreateObject<DuplicatesList>();
-            int duplicateId = 0;
             foreach(var (title, count) in duplicatesDictionary) {
                 if(count <= 1) continue;
 
                 var duplicate = objectSpace.CreateObject<Duplicate>();
-                duplicate.Id = duplicateId++;
                 duplicate.Title = title;
                 duplicate.Count = count;
 
