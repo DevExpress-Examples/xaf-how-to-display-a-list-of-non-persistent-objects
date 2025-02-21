@@ -17,7 +17,7 @@ This example stores a list of books. When a user clicks the **Show Duplicate Boo
 1. Declare the `Book` persistent class. Objects of this class denote books in a collection.
 1. Declare two non-persistent classes—`Duplicate` to store unique book titles and the total number of books with these titles, and `DuplicatesList` to aggregate the `Duplicate` objects.
 1. In a controller, implement a method that iterates through persistent `Book` objects, counts the number of copies of each book, and saves this information in a dictionary.
-1. Implement a method that iterates through dictionary items and creates `Duplicate` objects for items with a value greater than one (books with more than one copy). Arrange `Duplicate` objects into a `DuplicatesList` object.
+1. Implement a method that iterates through dictionary items and creates `Duplicate` objects for items with a value greater than one (books with more than one copy). Add `Duplicate` objects to a `DuplicatesList` collection.
 1. Add the [PopupWindowShowAction](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Actions.PopupWindowShowAction) to display a popup dialog when a user clicks the **Show Duplicate Books** action. Handle the [CustomizePopupWindowParams](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Actions.PopupWindowShowAction.CustomizePopupWindowParams) event and call the [CreateDetailView](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.XafApplication.CreateDetailView(DevExpress.ExpressApp.IObjectSpace-System.Object)) method to create a Detail View for the `DuplicatesList` object.
 
 
