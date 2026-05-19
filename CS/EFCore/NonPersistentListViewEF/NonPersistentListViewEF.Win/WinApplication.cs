@@ -18,7 +18,6 @@ public class NonPersistentListViewEFWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "NonPersistentListViewEF";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += NonPersistentListViewEFWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += NonPersistentListViewEFWindowsFormsApplication_CustomizeLanguagesList;
     }
